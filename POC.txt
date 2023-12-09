@@ -1,0 +1,6 @@
+1 - Back end em node e graphqel
+2 - Uso de kafka ou rabbit MQ
+3 - Banco de dados mysql
+4 - Front Angular
+5 - Criação de dll em C
+6 - Websocket
