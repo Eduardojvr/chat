@@ -1,18 +1,35 @@
 import express, { Request, Response } from 'express';
-const ffi = require('ffi-napi');
+import { Kafka, Consumer, EachMessagePayload } from 'kafkajs';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+async function run() {
+    const kafka = new Kafka({
+        clientId: 'my-consumer',
+        brokers: ['localhost:9092'], // Adapte conforme necessário
+    });
+
+    const consumer = kafka.consumer({ groupId: 'my-group' });
+    await consumer.connect();
+    await consumer.subscribe({ topic: 'meu-topico', fromBeginning: true });
+
+    await consumer.run({
+        eachMessage: async ({ topic, partition, message }: EachMessagePayload) => {
+            let processedMessage: any;
+            if (message != null) {
+                console.log("mensagemFila ", { message });
+            }
+        },
+    });
+}
+
 app.get('/', (req: Request, res: Response) => {
-  res.send(dateTimeDLL.getCurrentDateTime());
+    res.send("API NO AR!");
 });
 
-  const dateTimeDLL = ffi.Library('C:/Users/Eduardo/Desktop/POC/DLL/dataHoraAtual.dll', {
-    'getCurrentDateTime': ['string', []],
-  });
-
 app.listen(PORT, () => {
-//  const dateTime: string = dateTimeDLL.getCurrentDateTime();
-  console.log(`Server running at http://localhost:${PORT}/`);
+    console.log(`Server running at http://localhost:${PORT}/`);
+    run().catch(console.error);
+
 });

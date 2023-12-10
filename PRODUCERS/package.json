@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "ts-node src/kafka-producer.ts",
     "build": "tsc"
   },
   "dependencies": {
