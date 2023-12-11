@@ -1,8 +1,4 @@
 - Back end em node  ✔
-- graphqel
-- Uso de kafka ✔
 - rabbit MQ
-- Banco de dados mysql
-- Front Angular
-- Criação de dll em C ✔
-- Websocket
+- Front Angular ✔
+- Websocket ✔

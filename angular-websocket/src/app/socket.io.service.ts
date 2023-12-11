@@ -8,14 +8,15 @@ import { Observable } from 'rxjs';
 })
 export class WebsocketService {
   private socket: Socket;
+  private mensagens : string = "";
 
   constructor() {
-    // Substitua a URL pelo endereço do seu servidor WebSocket
     this.socket = io('http://localhost:3000');
   }
 
   sendMessage(message: string): void {
-    this.socket.emit('message', message);
+    this.mensagens = (message)
+    this.socket.emit('message', this.mensagens);
   }
 
   getMessage(): Observable<string> {
