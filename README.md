@@ -11,5 +11,5 @@ Na pasta angular-websocket:
 - npm start
 
 ### Acesso
-Acessar: https://localhost:4200
+Acessar: http://localhost:4200
 
