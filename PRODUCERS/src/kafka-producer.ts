@@ -31,5 +31,5 @@ async function run() {
 
 setInterval(async () => {
   run().catch(console.error);
-}, 20000);
+}, 3000);
 
